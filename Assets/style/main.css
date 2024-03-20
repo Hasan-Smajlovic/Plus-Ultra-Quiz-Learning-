@@ -5,20 +5,26 @@ html {
 
 body {
     margin: 0;
-    scroll-behavior: smooth;
 }
 
 /* Navbar */
 .navbar {
-    padding: 10px;
+    padding: 20px;
     background-color: #262626;
     color: rgb(213, 212, 212);
     overflow: hidden;
 }
 
-.navbar h1 {
+.navbar a {
     margin-top: 10px;
     font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+}
+
+.navbar a:hover {
+    color: #f0e68c;
+    transition: all 0.5s;
 }
 /*End of Navbar*/
 
@@ -48,7 +54,7 @@ body {
     cursor: pointer;
 }
 
-a:hover {
+.homePageContainer a:hover {
     background-color: #404040;
     transition: all 0.5s;
 }
@@ -195,4 +201,4 @@ a:hover {
         opacity: 1;
     }
 }
- }
+/* End of Keyframes */
