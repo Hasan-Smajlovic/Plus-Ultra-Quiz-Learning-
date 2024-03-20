@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    padding: 10px;
+    background-color: #262626;
+    color: rgb(213, 212, 212);
+    overflow: hidden;
+}
+
+.navbar h1 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+/*End of Navbar*/
+
+/* Home Page */
+#homePage h1 {
+    margin-top: 150px;
+    font-size: 3rem;
+}
+
+#homePage p {
+    font-size: 1.5rem;
+    max-width: 600px;
+}
+
+.homePageContainer {
+    margin-left: 50px;
+}
+
+.homeBtn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    width: 300px;
+    height: 50px;
+    font-size: 1.5rem;
+    background-color: #262626;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.homeBtn:hover {
+    background-color: #404040;
+    transition: all 0.5s;
+}
+
+.homePageImage1 {
+    position: absolute;
+    left: 55%;
+    top: 30%;
+    width: 550px;
+    height: 300px;
+    background-color: red;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.homePageImage2 {
+    position: absolute;
+    left: 55%;
+    top: 30%;
+    width: 440px;
+    height: 300px;
+    background-color: blue;
+    margin: 100px 50px 0px 50px;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.homePageImage3 {
+    position: absolute;
+    left: 55%;
+    top: 30%;
+    width: 340px;
+    height: 250px;
+    background-color: purple;
+    margin: 220px 100px 0px 100px;
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+/* End of Home Page */
+
+/*Quiz Selection Page*/
+#quizSelectionPage h1 {
+    margin-top: 250px;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.quizSelectionContainer {
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.quizSelection {
+    margin: 50px 50px;
+    padding: 10px 20px;
+    width: 500px;
+    height: 300px;
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+    border: #c4c4c4 2px solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.quizSelection:hover {
+    filter: blur(10px);
+    transition: all 1s;
+}
+
+.quizSelection button {
+    text-align: center;
+    margin: 10px 0px 0px 100px;
+    padding: 20px;
+    width: 300px;
+    height: 70px;
+    font-size: 1.5rem;
+    background-color: #262626;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}   
+
+.quizSelection button:hover {
+    background-color: #404040;
+    transition: all 0.5s;
+}
+/* End of Quiz Selection Page */
+
+/* Keyframes */
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
