@@ -40,7 +40,7 @@ body {
 
 /* Quiz Question */
 .quizQuestion {
-    margin-bottom: 5%;
+    margin-bottom: 80px;
     border-radius: 20px;
     border: solid black 1px;
     padding: 40px 100px;
@@ -63,7 +63,7 @@ body {
 
 .quizOptions button{
     border: none;
-    margin: 40px 100px 40px 100px;
+    margin: 0px 100px 40px 100px;
     padding: 30px 100px;
     cursor: pointer;
     border-radius: 10px;
@@ -85,6 +85,16 @@ body {
 }
 
 /* End of Quiz Options */
+
+.progressBar {
+    width: 400px;
+    height: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: solid black 1px;
+    transition: width 0.1s ease;
+}
 
 /* Keyframes */
 @keyframes fadeInAnimation {

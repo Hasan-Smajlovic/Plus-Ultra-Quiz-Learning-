@@ -1,4 +1,4 @@
-const questions  = [
+const questionsQuiz1 = [
 {
     question:"What is the capital of France?",
     answers: [
@@ -111,7 +111,7 @@ function showQuestion()
         quizOptions.removeChild(quizOptions.firstChild);
    }
 
-    let currentQuestion = questions[currentQuestionIndex];
+    let currentQuestion = questionsQuiz1[currentQuestionIndex];
     let  questionNumber = currentQuestionIndex +1;
     question.innerHTML = questionNumber + ". "+ currentQuestion.question; 
  
@@ -126,7 +126,6 @@ function showQuestion()
         button.addEventListener("click", selectAnswer);
     });
 
-   
 
 }
 function selectAnswer(event )
@@ -149,11 +148,11 @@ function selectAnswer(event )
    }
    setTimeout(() => {
     currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
+    if (currentQuestionIndex < questionsQuiz1.length) {
         showQuestion();
     } else {
         
-        alert(`Quiz ended! Your score is: ${score}/${questions.length}`);
+        alert(`Quiz ended! Your score is: ${score}/${questionsQuiz1.length}`);
     }
 }, 1500);
 }

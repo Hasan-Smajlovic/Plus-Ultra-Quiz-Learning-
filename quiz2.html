@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Assets/style/quiz.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="index.html">Navbar</a>
+    </div>
+    <div class="quizContainer">
+        <div class="quizQuestion">
+            <h1 id="Question"> Your question goes here</h1>
+        </div>
+        <div id="quizOptions" class="quizOptions">
+            <button onclick="selectAnswer(event)" class="optionsBtn">Answer 1</button>
+            <button onclick="selectAnswer(event)" class="optionsBtn">Answer 2</button>
+            <br>
+            <button onclick="selectAnswer(event)" class="optionsBtn">Answer 3</button>
+            <button onclick="selectAnswer(event)" class="optionsBtn">Answer 4</button>
+        </div>
+        <div class="progress">
+            <div id="progressBar" class="progressBar">
+            </div>
+        </div>
+        <script src="scriptQuiz2.js"></script>
+</body>
+
+</html>
