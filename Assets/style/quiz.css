@@ -40,10 +40,15 @@ body {
 
 /* Quiz Question */
 .quizQuestion {
-    margin-bottom: 80px;
+    margin-bottom: 5%;
+    margin-right: 10%;
+    margin-left: 10%;
     border-radius: 20px;
     border: solid black 1px;
-    padding: 40px 100px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     animation: fadeInAnimation ease 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -54,7 +59,7 @@ body {
     display: grid;
     grid-template-rows: auto auto;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 0px;
 
     animation: fadeInAnimation ease 1s;
     animation-iteration-count: 1;
@@ -72,16 +77,18 @@ body {
 }
 
 .quizOptions button:hover {
-    background-color: #f0e68c;
-    transition: all 0.5s;
+    background-color: rgba(242, 196, 139, 0.752);
+    transition: all 0.3s;
 }
 .correct 
 {
-    background-color: green !important;
+    background-color: rgba(0, 98, 0, 0.84) !important;
+    color: rgb(255, 255, 255);
 }
 .incorrect 
 {
-    background-color: red !important;
+    background-color: rgba(255, 0, 0, 0.891) !important;
+    color: black;
 }
 
 /* End of Quiz Options */
@@ -94,6 +101,30 @@ body {
     margin-bottom: 20px;
     border: solid black 1px;
     transition: width 0.1s ease;
+}
+
+#score {
+    display: none;
+    margin-bottom: 150px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.homeBtn{
+    display: block;
+    color: bisque;
+    margin-top: 30px;
+    border: solid black .3px;
+    padding: 20px 70px;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: rgb(0, 0, 0);
+    font-size: 1.2rem;   
+    box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.homeBtn:hover{
+    background-color: rgb(65, 63, 63);
 }
 
 /* Keyframes */
