@@ -147,15 +147,28 @@ function selectAnswer(event )
         });
    }
    setTimeout(() => {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questionsQuiz1.length) {
-        showQuestion();
-    } else {
-        
-        alert(`Quiz ended! Your score is: ${score}/${questionsQuiz1.length}`);
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+            showQuestion();
+            } else {
+            quizOptions.innerHTML = '';
+            result.textContent = `Quiz ended! Your score is: ${score}/${questions.length}`;
+            result.style.display = 'block';
+            question.style.display = 'none'; 
+            question.parentNode.style.border = 'none'; 
+            document.body.style.backgroundColor="bisque";
+            }
+            const homeButton = document.createElement("button");
+            homeButton.textContent = "Go to Home Page";
+            homeButton.classList.add("homeBtn");
+            result.appendChild(homeButton);
+
+            homeButton.addEventListener("click", function() {
+                window.location.href = "index.html"; 
+            });
+        }, 1500);
     }
-}, 1500);
-}
+
 
 
 startQuiz();

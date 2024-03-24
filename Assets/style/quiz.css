@@ -93,6 +93,16 @@ body {
 
 /* End of Quiz Options */
 
+.progressBarFill {
+    background-color: #262626;
+    transition: width ease 0.5s;
+    width: 400px;
+    height: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid black 2px;
+}
+
 .progressBar {
     width: 400px;
     height: 20px;
@@ -100,7 +110,6 @@ body {
     border-radius: 10px;
     margin-bottom: 20px;
     border: solid black 1px;
-    transition: width 0.1s ease;
 }
 
 #score {

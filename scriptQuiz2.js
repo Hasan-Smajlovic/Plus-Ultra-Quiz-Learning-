@@ -1,4 +1,4 @@
-const questionsQuiz2 = [
+const questions = [
     {
         question: "Fifty Shades of ",
         answers: [
@@ -50,7 +50,7 @@ const questionsQuiz2 = [
     },
 
     {
-        questions: "Which Warren starred in “Dick Tracy” and “Bugsy Malone”?",
+        question: "Which Warren starred in “Dick Tracy” and “Bugsy Malone”?",
         answers: [
             { text: "Warren Beatty", correct: true },
             { text: "Warren Oates", correct: false },
@@ -80,7 +80,7 @@ const questionsQuiz2 = [
     },
 
     {
-        questions: "Who won Oscars for “Philadelphia” in ’93 and “Forrest Gump” in ’94?",
+        question: "Who won Oscars for “Philadelphia” in ’93 and “Forrest Gump” in ’94?",
         answers: [
             { text: "Tom Hanks", correct: true },
             { text: "Denzel Washington", correct: false },
@@ -91,90 +91,78 @@ const questionsQuiz2 = [
 ];
 
 const question = document.getElementById("Question");
-const quizOptions = document.getElementById("quizOptions");
-
-let currentQuestionIndex = 0;
-let score = 0;
-
-function startQuiz()
-{
-    currentQuestionIndex = 0;
-    score = 0;
-    showQuestion();
-}
-
-function showQuestion()
-{
-    while(quizOptions.firstChild)
-   {
-        quizOptions.removeChild(quizOptions.firstChild);
-   }
-
-    let currentQuestion = questionsQuiz2[currentQuestionIndex];
-    let  questionNumber = currentQuestionIndex +1;
-    question.innerHTML = questionNumber + ". "+ currentQuestion.question; 
- 
-    currentQuestion.answers.forEach(answer => {
-        const button = document.createElement("button");
-        button.innerHTML = answer.text;
-        button.classList.add("optionsBtn");
-        quizOptions.appendChild(button);
-        if (answer.correct) {
-            button.dataset.correct = answer.correct;
-        }
-        button.addEventListener("click", selectAnswer);
-    });
-
-
-}
-function selectAnswer(event )
-{
-    const selected = event.target;
-    const isCorrect = selected.dataset.correct === "true";
-    if (isCorrect) {
-
-        selected.classList.add("correct");
-        score++;
-    } else {
-        selected.classList.add("incorrect");
-       
-        Array.from(quizOptions.children).forEach(button => {
-            if (button.dataset.correct === "true") {
-                button.classList.add("correct");
-            }
-            button.disabled = true;
-        });
-        progressBar();
-   }
-   setTimeout(() => {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questionsQuiz2.length) {
-        showQuestion();
-    } else {
-        
-        alert(`Quiz ended! Your score is: ${score}/${questionsQuiz2.length}`);
-    }
-   }, 1500);
+    const quizOptions = document.getElementById("quizOptions");
+    const result = document.getElementById("score");
+    let currentQuestionIndex = 0;
+    let score = 0;
     
-    function progressBar(callback) {
-    let progress = document.getElementById("progressBar");
-    let width = 0;
-    let id = setInterval(frame, 10);
+    function startQuiz()
+    {
+        currentQuestionIndex = 0;
+        score = 0;
+        showQuestion();
+    }
+    
+    function showQuestion()
+    {
+        while(quizOptions.firstChild)
+       {
+            quizOptions.removeChild(quizOptions.firstChild);
+       }
+        let currentQuestion = questions[currentQuestionIndex];
+        let  questionNumber = currentQuestionIndex +1;
+        question.innerHTML = questionNumber + ". "+ currentQuestion.question; 
+     
+        currentQuestion.answers.forEach(answer => {
+            const button = document.createElement("button");
+            button.innerHTML = answer.text;
+            button.classList.add("optionsBtn");
+            quizOptions.appendChild(button);
+            if (answer.correct) {
+                button.dataset.correct = answer.correct;
+            }
+            button.addEventListener("click", selectAnswer);
+        });
+    }
 
-    function frame() {
-        if (width >= 100) {
-            clearInterval(id);
+    function selectAnswer(event )
+    {
+        const selected = event.target;
+        const isCorrect = selected.dataset.correct === "true";
+        if (isCorrect) {
+            selected.classList.add("correct");
+            score++;
         } else {
-            width++;
-            progress.style.width = width + "%";
-        }
-    }
-    if (callback) {
-        callback();
-    }
-}
-}
+            selected.classList.add("incorrect");
+            Array.from(quizOptions.children).forEach(button => {
+                if (button.dataset.correct === "true") {
+                    button.classList.add("correct");
+                }
+                button.disabled = true;
+            });
+       }
+       
+        setTimeout(() => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+            showQuestion();
+            } else {
+            quizOptions.innerHTML = '';
+            result.textContent = `Quiz ended! Your score is: ${score}/${questions.length}`;
+            result.style.display = 'block';
+            question.style.display = 'none'; 
+            question.parentNode.style.border = 'none'; 
+            document.body.style.backgroundColor="bisque";
+            }
+            const homeButton = document.createElement("button");
+            homeButton.textContent = "Go to Home Page";
+            homeButton.classList.add("homeBtn");
+            result.appendChild(homeButton);
 
+            homeButton.addEventListener("click", function() {
+                window.location.href = "index.html"; 
+            });
+        }, 1500);
+    }
 
 startQuiz();
-
