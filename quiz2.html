@@ -14,19 +14,22 @@
     </div>
     <div class="quizContainer">
         <div class="quizQuestion">
-            <h1 id="Question"> Your question goes here</h1>
+            <h1 id="Question">Your question goes here</h1>
         </div>
         <div id="quizOptions" class="quizOptions">
-            <button onclick="selectAnswer(event)" class="optionsBtn">Answer 1</button>
-            <button onclick="selectAnswer(event)" class="optionsBtn">Answer 2</button>
+            <button class="optionsBtn" onclick="selectAnswer(event)">Answer 1</button>
+            <button class="optionsBtn" onclick="selectAnswer(event)">Answer 2</button>
             <br>
-            <button onclick="selectAnswer(event)" class="optionsBtn">Answer 3</button>
-            <button onclick="selectAnswer(event)" class="optionsBtn">Answer 4</button>
+            <button class="optionsBtn" onclick="selectAnswer(event)">Answer 3</button>
+            <button class="optionsBtn" onclick="selectAnswer(event)">Answer 4</button>
         </div>
-        <div id="score"></div>
-        
+        <div id="progress" class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
+            <div id="score"></div>
         </div>
-        <script src="scriptQuiz2.js"></script>
+    </div>
+    <script src="scriptQuiz2.js"></script>
 </body>
+
 
 </html>

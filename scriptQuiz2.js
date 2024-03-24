@@ -141,7 +141,6 @@ const question = document.getElementById("Question");
                 button.disabled = true;
             });
        }
-       
         setTimeout(() => {
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
@@ -163,6 +162,36 @@ const question = document.getElementById("Question");
                 window.location.href = "index.html"; 
             });
         }, 1500);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const progressBar = document.querySelector('.progress-bar');
+    const buttons = document.querySelectorAll('.optionsBtn');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            updateProgressBar(10);
+        });
+    });
+
+    function updateProgressBar(increment) {
+        let currentWidth = parseInt(progressBar.style.width) || 0;
+        let newWidth = currentWidth + increment;
+
+        if (newWidth <= 100) {
+            progressBar.style.width = newWidth + '%';
+            progressBar.style.backgroundColor = 'green';
+        } else {
+            progressBar.style.width = '100%';
+        }
     }
+});
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    showQuestion();
+    updateProgressBar(10);
+}
+
 
 startQuiz();

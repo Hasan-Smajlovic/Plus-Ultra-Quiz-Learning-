@@ -142,7 +142,7 @@ const questions  = [
                 button.disabled = true;
             });
        }
-       
+
         setTimeout(() => {
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
