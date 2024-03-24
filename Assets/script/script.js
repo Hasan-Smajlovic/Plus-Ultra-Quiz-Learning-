@@ -1,4 +1,4 @@
-const questionsQuiz1 = [
+const questions = [
 {
     question:"What is the capital of France?",
     answers: [
@@ -92,61 +92,58 @@ const questionsQuiz1 = [
 ];
 
 const question = document.getElementById("Question");
-const quizOptions = document.getElementById("quizOptions");
+    const quizOptions = document.getElementById("quizOptions");
+    const result = document.getElementById("score");
+    let currentQuestionIndex = 0;
+    let score = 0;
 
-let currentQuestionIndex = 0;
-let score = 0;
-
-function startQuiz()
-{
-    currentQuestionIndex = 0;
-    score = 0;
-    showQuestion();
-}
-
-function showQuestion()
-{
-    while(quizOptions.firstChild)
-   {
-        quizOptions.removeChild(quizOptions.firstChild);
-   }
-
-    let currentQuestion = questionsQuiz1[currentQuestionIndex];
-    let  questionNumber = currentQuestionIndex +1;
-    question.innerHTML = questionNumber + ". "+ currentQuestion.question; 
- 
-    currentQuestion.answers.forEach(answer => {
-        const button = document.createElement("button");
-        button.innerHTML = answer.text;
-        button.classList.add("optionsBtn");
-        quizOptions.appendChild(button);
-        if (answer.correct) {
-            button.dataset.correct = answer.correct;
-        }
-        button.addEventListener("click", selectAnswer);
-    });
-
-
-}
-function selectAnswer(event )
-{
-    const selected = event.target;
-    const isCorrect = selected.dataset.correct === "true";
-    if (isCorrect) {
-
-        selected.classList.add("correct");
-        score++;
-    } else {
-        selected.classList.add("incorrect");
-       
-        Array.from(quizOptions.children).forEach(button => {
-            if (button.dataset.correct === "true") {
-                button.classList.add("correct");
+    function startQuiz()
+    {
+        currentQuestionIndex = 0;
+        score = 0;
+        showQuestion();
+    }
+    
+    function showQuestion()
+    {
+        while(quizOptions.firstChild)
+       {
+            quizOptions.removeChild(quizOptions.firstChild);
+       }
+        let currentQuestion = questions[currentQuestionIndex];
+        let  questionNumber = currentQuestionIndex +1;
+        question.innerHTML = questionNumber + ". "+ currentQuestion.question; 
+     
+        currentQuestion.answers.forEach(answer => {
+            const button = document.createElement("button");
+            button.innerHTML = answer.text;
+            button.classList.add("optionsBtn");
+            quizOptions.appendChild(button);
+            if (answer.correct) {
+                button.dataset.correct = answer.correct;
             }
-            button.disabled = true;
+            button.addEventListener("click", selectAnswer);
         });
-   }
-   setTimeout(() => {
+    }
+
+    function selectAnswer(event )
+    {
+        const selected = event.target;
+        const isCorrect = selected.dataset.correct === "true";
+        if (isCorrect) {
+            selected.classList.add("correct");
+            score++;
+        } else {
+            selected.classList.add("incorrect");
+            Array.from(quizOptions.children).forEach(button => {
+                if (button.dataset.correct === "true") {
+                    button.classList.add("correct");
+                }
+                button.disabled = true;
+            });
+       }
+
+        setTimeout(() => {
             currentQuestionIndex++;
             if (currentQuestionIndex < questions.length) {
             showQuestion();
@@ -170,6 +167,34 @@ function selectAnswer(event )
     }
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    const progressBar = document.querySelector('.progress-bar');
+    const buttons = document.querySelectorAll('.optionsBtn');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            updateProgressBar(10);
+        });
+    });
+
+    function updateProgressBar(increment) {
+        let currentWidth = parseInt(progressBar.style.width) || 0;
+        let newWidth = currentWidth + increment;
+
+        if (newWidth <= 100) {
+            progressBar.style.width = newWidth + '%';
+            progressBar.style.backgroundColor = 'green';
+        } else {
+            progressBar.style.width = '100%';
+        }
+    }
+});
+
+function nextQuestion() {
+    currentQuestionIndex++;
+    showQuestion();
+    updateProgressBar(10);
+}
+
 
 startQuiz();
-
